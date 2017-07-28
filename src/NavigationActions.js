@@ -11,10 +11,15 @@ const RESET = 'Navigation/RESET';
 const SET_PARAMS = 'Navigation/SET_PARAMS';
 const URI = 'Navigation/URI';
 
-const createAction = (type: string) => (payload: Object = {}) => ({
-  type,
-  ...payload,
-});
+const createAction = (type: string) => {
+  const fn = (payload: Object = {}) => ({
+    type,
+    ...payload,
+  });
+
+  (fn: any).toString = () => type;
+  return fn;
+};
 
 const back = createAction(BACK);
 const init = createAction(INIT);

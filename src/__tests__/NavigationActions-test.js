@@ -6,6 +6,7 @@ describe('actions', () => {
   const data = { foo: 'bar' };
 
   it('exports back action and type', () => {
+    expect(NavigationActions.back.toString()).toEqual(NavigationActions.BACK);
     expect(NavigationActions.back()).toEqual({ type: NavigationActions.BACK });
     expect(NavigationActions.back(data)).toEqual({
       type: NavigationActions.BACK,
@@ -14,6 +15,7 @@ describe('actions', () => {
   });
 
   it('exports init action and type', () => {
+    expect(NavigationActions.init.toString()).toEqual(NavigationActions.INIT);
     expect(NavigationActions.init()).toEqual({ type: NavigationActions.INIT });
     expect(NavigationActions.init(data)).toEqual({
       type: NavigationActions.INIT,
@@ -22,6 +24,9 @@ describe('actions', () => {
   });
 
   it('exports navigate action and type', () => {
+    expect(NavigationActions.navigate.toString()).toEqual(
+      NavigationActions.NAVIGATE
+    );
     expect(NavigationActions.navigate()).toEqual({
       type: NavigationActions.NAVIGATE,
     });
@@ -32,6 +37,7 @@ describe('actions', () => {
   });
 
   it('exports reset action and type', () => {
+    expect(NavigationActions.reset.toString()).toEqual(NavigationActions.RESET);
     expect(NavigationActions.reset()).toEqual({
       type: NavigationActions.RESET,
     });
@@ -42,6 +48,9 @@ describe('actions', () => {
   });
 
   it('exports setParams action and type', () => {
+    expect(NavigationActions.setParams.toString()).toEqual(
+      NavigationActions.SET_PARAMS
+    );
     expect(NavigationActions.setParams()).toEqual({
       type: NavigationActions.SET_PARAMS,
     });
@@ -52,6 +61,7 @@ describe('actions', () => {
   });
 
   it('exports uri action and type', () => {
+    expect(NavigationActions.uri.toString()).toEqual(NavigationActions.URI);
     expect(NavigationActions.uri()).toEqual({ type: NavigationActions.URI });
     expect(NavigationActions.uri(data)).toEqual({
       type: NavigationActions.URI,
