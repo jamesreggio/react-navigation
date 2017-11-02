@@ -17,7 +17,7 @@ const createAction = (type: string) => {
     ...payload,
   });
 
-  (fn: any).toString = () => type;
+  (fn: mixed).toString = () => type;
   return fn;
 };
 
