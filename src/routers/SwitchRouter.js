@@ -1,5 +1,6 @@
 import invariant from '../utils/invariant';
 import getScreenForRouteName from './getScreenForRouteName';
+import getRouterForRouteName from './getRouterForRouteName';
 import createConfigGetter from './createConfigGetter';
 
 import NavigationActions from '../NavigationActions';
@@ -42,9 +43,9 @@ export default (routeConfigs, config = {}) => {
         typeof routeConfig.path === 'string' ? routeConfig.path : routeName;
     }
     childRouters[routeName] = null;
-    const screen = getScreenForRouteName(routeConfigs, routeName);
-    if (screen.router) {
-      childRouters[routeName] = screen.router;
+    const router = getRouterForRouteName(routeConfigs, routeName);
+    if (router) {
+      childRouters[routeName] = router;
     }
   });
   if (initialRouteIndex === -1) {
