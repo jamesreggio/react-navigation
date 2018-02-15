@@ -5,6 +5,7 @@ import pathToRegexp from 'path-to-regexp';
 import NavigationActions from '../NavigationActions';
 import createConfigGetter from './createConfigGetter';
 import getScreenForRouteName from './getScreenForRouteName';
+import getRouterForRouteName from './getRouterForRouteName';
 import StateUtils from '../StateUtils';
 import validateRouteConfigMap from './validateRouteConfigMap';
 import getScreenConfigDeprecated from './getScreenConfigDeprecated';
@@ -51,10 +52,10 @@ export default (
 
   // Loop through routes and find child routers
   routeNames.forEach((routeName: string) => {
-    const screen = getScreenForRouteName(routeConfigs, routeName);
-    if (screen && screen.router) {
+    const router = getRouterForRouteName(routeConfigs, routeName);
+    if (router) {
       // If it has a router it's a navigator.
-      childRouters[routeName] = screen.router;
+      childRouters[routeName] = router;
     } else {
       // If it doesn't have router it's an ordinary React component.
       childRouters[routeName] = null;

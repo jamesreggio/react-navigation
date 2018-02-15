@@ -2,6 +2,7 @@
 
 import invariant from '../utils/invariant';
 import getScreenForRouteName from './getScreenForRouteName';
+import getRouterForRouteName from './getRouterForRouteName';
 import createConfigGetter from './createConfigGetter';
 
 import NavigationActions from '../NavigationActions';
@@ -267,15 +268,15 @@ export default (
       const route = state.routes[state.index];
       const routeName = order[state.index];
       const subPath = paths[routeName];
-      const screen = getScreenForRouteName(routeConfigs, routeName);
+      const router = getRouterForRouteName(routeConfigs, routeName);
       let path = subPath;
       let params = route.params;
-      if (screen && screen.router) {
+      if (router) {
         // $FlowFixMe there's no way type the specific shape of the nav state
         const stateRoute: NavigationStateRoute = route;
         // If it has a router it's a navigator.
         // If it doesn't have router it's an ordinary React component.
-        const child = screen.router.getPathAndParamsForState(stateRoute);
+        const child = router.getPathAndParamsForState(stateRoute);
         path = subPath ? `${subPath}/${child.path}` : child.path;
         params = child.params ? { ...params, ...child.params } : params;
       }
