@@ -9,6 +9,8 @@ const back = (payload = {}) => ({
   immediate: payload.immediate,
 });
 
+back.toString = () => BACK;
+
 const init = (payload = {}) => {
   const action = {
     type: INIT,
@@ -18,6 +20,8 @@ const init = (payload = {}) => {
   }
   return action;
 };
+
+init.toString = () => INIT;
 
 const navigate = payload => {
   const action = {
@@ -36,11 +40,15 @@ const navigate = payload => {
   return action;
 };
 
+navigate.toString = () => NAVIGATE;
+
 const setParams = payload => ({
   type: SET_PARAMS,
   key: payload.key,
   params: payload.params,
 });
+
+setParams.toString = () => SET_PARAMS;
 
 export default {
   // Action constants
