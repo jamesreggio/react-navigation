@@ -13,7 +13,9 @@ function validateRouteConfigMap(routeConfigs) {
 
   routeNames.forEach(routeName => {
     const routeConfig = routeConfigs[routeName];
-    const screenComponent = getScreenComponent(routeConfig);
+    const screenComponent = !routeConfig
+      ? null
+      : routeConfig.screen ? routeConfig.screen : routeConfig;
 
     if (
       !screenComponent ||
@@ -43,14 +45,6 @@ function validateRouteConfigMap(routeConfigs) {
       );
     }
   });
-}
-
-function getScreenComponent(routeConfig) {
-  if (!routeConfig) {
-    return null;
-  }
-
-  return routeConfig.screen ? routeConfig.screen : routeConfig;
 }
 
 export default validateRouteConfigMap;
