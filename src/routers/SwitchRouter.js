@@ -207,6 +207,7 @@ export default (routeConfigs, config = {}) => {
               ...state,
               routes,
               index: activeChildIndex,
+              isTransitioning: true,
             });
           } else if (
             !newChildState &&
@@ -242,6 +243,7 @@ export default (routeConfigs, config = {}) => {
         return getNextState(prevState, {
           ...state,
           index: activeChildIndex,
+          isTransitioning: true,
         });
       } else if (didNavigate && !inputState) {
         return state;
